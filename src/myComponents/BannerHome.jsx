@@ -5,7 +5,7 @@ import { TimerIcon } from 'lucide-react'
 
 const BannerHome = () => {
 
-    let heroBlogId = "2GjO4vWCv54Gm8UNzsNSXB"
+    let heroBlogId = "10SdjFpYMGdBqphsYWFqhP"
     const [heroBlog, setHeroBlog] = useState(null)
 
     useEffect(() => {
@@ -26,10 +26,10 @@ const BannerHome = () => {
                     />
                 </div>
                 {/* Content side */}
-                <div className="contentSide md:w-2/4 max-md:py-8 bg-linearBlueBg flex flex-col justify-center items-center space-y-4 px-10">
-                    <h1 className='text-3xl md:text-5xl font-bold capitalize text-center'>{heroBlog?.title}</h1>
+                <div className="contentSide md:w-2/4 max-md:py-8 bg-linearBlueBg flex flex-col justify-center md:items-center space-y-4 px-10">
+                    <h1 className='text-3xl md:text-5xl font-bold capitalize md:text-center'>{heroBlog?.title}</h1>
                     <p className='md:text-xl flex items-center'><TimerIcon />&nbsp;{heroBlog?.minRead} min read</p>
-                    <Link to={`/blogs/${urlSlug}`} className='p-1 px-4 rounded-md border border-primaryGrey hover:bg-white/10'>Check out</Link>
+                    <Link to={`/blogs/${urlSlug}`} className='p-1 px-4 rounded-md border border-primaryGrey hover:bg-white/10 text-center'>Check out</Link>
                 </div>
             </section>
         </>
