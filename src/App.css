@@ -9,3 +9,10 @@ body {
     background-color: #121212;
     color: white;
 }
+
+.textClipBg {
+    background: linear-gradient(to right, #f12711, #f5af19);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+} 

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Home from './pages/Home'
 import Navbar from './myComponents/Navbar'
 import PageNotFound from './pages/PageNotFound'
+import { Toaster } from 'sonner'
 
 const App = () => {
 
@@ -10,6 +11,7 @@ const App = () => {
     <>
       <Router>
         <Navbar />
+        <Toaster position='top-center' richColors />
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='*' element={<PageNotFound />} />
