@@ -18,7 +18,7 @@ const Footer = () => {
 
     return (
         <>
-            <footer className='w-full min-h-12 bg-linearBlueBg flex justify-around items-center max-md:flex-col max-md:space-y-6 max-md:py-4'>
+            <footer className='w-full min-h-20 bg-linearBlueBg flex justify-around items-center max-md:flex-col max-md:space-y-6 max-md:py-4'>
                 {/* Logo */}
                 <Link to="/">
                     <img src={WeblyLogo} alt="Webly" className='h-12' />

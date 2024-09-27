@@ -41,7 +41,7 @@ const Home = () => {
                 </section>
 
                 {/* Mid image section */}
-                <section className='relative w-11/12 md:w-4/5 flex max-md:flex-col-reverse justify-between items-center space-y-4'>
+                <section className='relative w-11/12 md:w-4/5 flex max-lg:flex-col-reverse justify-between items-center space-y-4'>
                     <img src={HeroImage} alt="Webly"
                         className='md:h-[75vh] object-contain rounded-xl'
                     />
