@@ -1,19 +1,21 @@
 import './App.css'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import Home from './pages/Home'
 import Navbar from './myComponents/Navbar'
 import PageNotFound from './pages/PageNotFound'
 import { Toaster } from 'sonner'
+import Home from './pages/Home'
+import Blogs from './pages/Blogs'
 
 const App = () => {
 
   return (
     <>
       <Router>
-        <Navbar />
         <Toaster position='top-center' richColors />
+        <Navbar />
         <Routes>
           <Route path='/' element={<Home />} />
+          <Route path='/blogs' element={<Blogs />} />
           <Route path='*' element={<PageNotFound />} />
         </Routes>
       </Router>
@@ -23,7 +25,3 @@ const App = () => {
 }
 
 export default App
-
-// template 1: https://www.wix.com/website-template/view/html/2534?originUrl=https%3A%2F%2Fwww.wix.com%2Fwebsite%2Ftemplates%3Fcriteria%3DPersonal%2BBlog%2BWebsite%2BTemplates&tpClick=view_button&esi=b3fa2040-eda3-4fa3-8e6e-e27d09767498
-// template 2: https://medium.com/tag/react
-// template 3: https://css-tricks.com (Home page)

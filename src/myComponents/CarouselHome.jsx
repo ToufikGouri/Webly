@@ -28,7 +28,7 @@ const CarouselHome = ({ blogs }) => {
                                     className='relative flex max-md:flex-col bg-cardBg rounded-xl overflow-hidden hover:bg-white/10'
                                 >
                                     <img src={val.fields.image.fields.file.url} alt={val.fields.title} className='h-64 md:h-80 w-full md:w-2/4 object-cover object-center' />
-                                    <div className='flex flex-col justify-center space-y-4 px-2 min-h-32 max-md:p-4'>
+                                    <div className='flex flex-col justify-center md:items-center md:text-center space-y-4 px-2 min-h-32 max-md:p-4'>
                                         <h1 className='text-xl md:text-2xl'>{val.fields.title}</h1>
                                         <p className='flex items-center max-md:text-sm'><TimerIcon />&nbsp;{val.fields.minRead} min read</p>
                                     </div>
