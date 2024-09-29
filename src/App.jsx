@@ -6,6 +6,7 @@ import { Toaster } from 'sonner'
 import Home from './pages/Home'
 import Blogs from './pages/Blogs'
 import BlogSingle from './pages/BlogSingle'
+import About from './pages/About'
 
 const App = () => {
 
@@ -18,6 +19,7 @@ const App = () => {
           <Route path='/' element={<Home />} />
           <Route path='/blogs' element={<Blogs />} />
           <Route path='/blogs/:slug' element={<BlogSingle />} />
+          <Route path='/about' element={<About />} />
           <Route path='*' element={<PageNotFound />} />
         </Routes>
       </Router>
