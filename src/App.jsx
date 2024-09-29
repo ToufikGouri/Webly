@@ -7,6 +7,7 @@ import Home from './pages/Home'
 import Blogs from './pages/Blogs'
 import BlogSingle from './pages/BlogSingle'
 import About from './pages/About'
+import Contact from './pages/Contact'
 
 const App = () => {
 
@@ -20,6 +21,7 @@ const App = () => {
           <Route path='/blogs' element={<Blogs />} />
           <Route path='/blogs/:slug' element={<BlogSingle />} />
           <Route path='/about' element={<About />} />
+          <Route path='/contact' element={<Contact />} />
           <Route path='*' element={<PageNotFound />} />
         </Routes>
       </Router>
