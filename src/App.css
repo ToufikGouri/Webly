@@ -10,9 +10,44 @@ body {
     color: white;
 }
 
+/* navbar bigger screens */
+.nav-bs a {
+    position: relative;
+}
+
+.nav-bs a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #5271ff;
+    transition: all 200ms ease-in-out;
+}
+
+.nav-bs a.active::after {
+    width: 100%;
+}
+
+.nav-bs a:hover {
+    color: #5271ff;
+}
+
+/* navbar smaller screens */
+.nav-ss a {
+    display: flex;
+    padding: 16px;
+    border-bottom: 2px solid #595959;
+}
+
+.nav-ss a.active {
+    color: #5271ff;
+}
+
 .textClipBg {
     background: linear-gradient(to right, #f12711, #f5af19);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-} 
+}

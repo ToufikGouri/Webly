@@ -30,7 +30,7 @@ const Navbar = () => {
                 </NavLink>
 
                 {/* Nav-links */}
-                <ul className='w-2/4 max-md:hidden uppercase flex justify-around items-center'>
+                <ul className='nav-bs w-2/4 max-md:hidden uppercase flex justify-around items-center'>
                     <li><NavLink to="/">Home</NavLink></li>
                     <li><NavLink to="/blogs">Blog</NavLink></li>
                     <li><NavLink to="/about">About</NavLink></li>
@@ -39,11 +39,11 @@ const Navbar = () => {
 
                 {/* For smaller screens */}
                 <button className='md:hidden' onClick={() => setIsMenuOpen(!isMenuOpen)}>{isMenuOpen ? <XIcon /> : <MenuIcon />} </button>
-                <ul ref={menuRef} onClick={() => setIsMenuOpen(false)} className={`w-2/4 h-screen md:hidden text-xl uppercase bg-bodyBg duration-200 absolute z-40 top-12 ${isMenuOpen ? "right-0" : "-right-96"}`}>
-                    <li><NavLink to="/" className="flex p-4 border-b border-primaryGrey">Home</NavLink></li>
-                    <li><NavLink to="/blogs" className="flex p-4 border-b border-primaryGrey">Blog</NavLink></li>
-                    <li><NavLink to="/about" className="flex p-4 border-b border-primaryGrey">About</NavLink></li>
-                    <li><NavLink to="/contact" className="flex p-4 border-b border-primaryGrey">Contact</NavLink></li>
+                <ul ref={menuRef} onClick={() => setIsMenuOpen(false)} className={`nav-ss w-2/4 h-screen md:hidden text-xl uppercase bg-bodyBg duration-200 absolute z-40 top-12 ${isMenuOpen ? "right-0" : "-right-96"}`}>
+                    <li><NavLink to="/">Home</NavLink></li>
+                    <li><NavLink to="/blogs">Blog</NavLink></li>
+                    <li><NavLink to="/about">About</NavLink></li>
+                    <li><NavLink to="/contact">Contact</NavLink></li>
                 </ul>
 
             </nav>
