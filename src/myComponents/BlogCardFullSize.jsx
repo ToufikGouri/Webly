@@ -11,7 +11,7 @@ const BlogCardFullSize = ({ blog }) => {
 
     return (
         <>
-            <Link to={`/blog/${urlSlug}`} className='relative min-h-32 max-md:mx-2 flex bg-cardBg rounded-xl overflow-hidden duration-200 hover:translate-x-2'>
+            <Link to={`/blogs/${urlSlug}`} className='relative min-h-32 max-md:mx-2 flex bg-cardBg rounded-xl overflow-hidden duration-200 hover:translate-x-2'>
                 <img src={image.fields.file.url} alt={title} className='h-32 md:h-48 w-2/5 object-cover object-center' />
 
                 <div className='w-3/5 flex flex-col justify-between p-2'>

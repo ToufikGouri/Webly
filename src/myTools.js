@@ -11,17 +11,6 @@ const managementClient = createManagementClient({
     accessToken: import.meta.env.VITE_CONTENTFUL_MANAGEMENT_ACCESS_TOKEN,
 })
 
-const getBlogByTag = (data, tag) => {
-    return data.filter(val =>
-        val.metadata.tags.some(val => val.sys.id == tag)
-    )
-}
-
-const getBlogById = async (id) => {
-    return await client.getEntry(id)
-        .then(val => val.fields)
-}
-
 const generateUrlSlug = (title = "404", id = "") => {
     return title
         .trim()
@@ -36,7 +25,7 @@ const formatDate = (date) => {
     const now = moment()
 
     // Check how many days ago the date is
-    const daysDifference = createdTime.diff(now, 'days');
+    const daysDifference = now.diff(createdTime, 'days');
 
     // Logic for displaying relative time or specific date
     const displayDate = daysDifference > 6
@@ -49,8 +38,6 @@ const formatDate = (date) => {
 export {
     client,
     managementClient,
-    getBlogByTag,
-    getBlogById,
     generateUrlSlug,
     formatDate
 }

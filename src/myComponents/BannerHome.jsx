@@ -1,16 +1,26 @@
 import React, { useEffect, useState } from 'react'
-import { generateUrlSlug, getBlogById } from '../myTools'
+import { client, generateUrlSlug } from '../myTools'
 import { Link } from 'react-router-dom'
 import { TimerIcon } from 'lucide-react'
 
 const BannerHome = () => {
 
-    let heroBlogId = "10SdjFpYMGdBqphsYWFqhP"
     const [heroBlog, setHeroBlog] = useState(null)
+    const [heroBlogId, setHeroBlogId] = useState(null)
+
+    const getHeroBlog = async () => {
+        await client.getEntries({
+            content_type: "blogPage",
+            "metadata.tags.sys.id[all]": "homeHeroBlog",
+        })
+            .then(val => {
+                setHeroBlog(val.items[0].fields)
+                setHeroBlogId(val.items[0].sys.id)
+            })
+    }
 
     useEffect(() => {
-        getBlogById(heroBlogId)
-            .then(val => setHeroBlog(val))
+        getHeroBlog()
     }, [])
 
     const urlSlug = generateUrlSlug(heroBlog?.title, heroBlogId)
