@@ -19,15 +19,15 @@ const Contact = () => {
                     <div className='flex max-md:flex-col max-md:space-y-4 md:space-x-4'>
                         <div className='size-60 text-center rounded-xl bg-cardBg flex flex-col justify-center items-center space-y-4'>
                             <h3 className='flex items-center text-xl border-b border-yellow-500'><HomeIcon />&nbsp;OFFICE</h3>
-                            <p>315 93rd St Brooklyn, New York 11209, United States</p>
+                            <p>315 93rd somewhere, on Earth Right now, 11209</p>
                         </div>
                         <div className='size-60 text-center rounded-xl bg-cardBg flex flex-col justify-center items-center space-y-4'>
                             <h3 className='flex items-center text-xl border-b border-yellow-500'><PhoneIcon />&nbsp;CONTACT</h3>
-                            <p><a href="tel:+1 987-654-321">+1 987-654-321</a></p>
+                            <p><a href="tel:+91 8668437960">+91 8668437960</a></p>
                         </div>
                         <div className='size-60 text-center rounded-xl bg-cardBg flex flex-col justify-center items-center space-y-4'>
                             <h3 className='flex items-center text-xl border-b border-yellow-500'><MailIcon />&nbsp;EMAIL</h3>
-                            <p><a href="mailto:example@gmail.com">example@gmail.com</a></p>
+                            <p><a href="mailto:toufikgouri2@gmail.com">toufikgouri2@gmail.com</a></p>
                         </div>
                     </div>
                 </div>
