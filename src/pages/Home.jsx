@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { client } from '../myTools'
-import BannerHome from '../myComponents/BannerHome'
-import CarouselHome from '../myComponents/CarouselHome'
-import BlogCard from '../myComponents/BlogCard'
+import BannerHome, { BannerHomeSkeleton } from '../myComponents/BannerHome'
+import CarouselHome, { CarouselHomeSkeleton } from '../myComponents/CarouselHome'
+import BlogCard, { BlogCardSkeleton } from '../myComponents/BlogCard'
 import NewsLetter from '../myComponents/NewsLetter'
 import Footer from '../myComponents/Footer'
 import { Link } from 'react-router-dom'
@@ -12,10 +12,13 @@ import HeroImage from "../assets/HeroHome.webp"
 const Home = () => {
 
     const [blogs, setBlogs] = useState(null)
+    const [loading, setLoading] = useState(true)
 
     const getAllBlogs = async () => {
         await client.getEntries({ content_type: "blogPage", limit: 9 })
             .then(val => setBlogs(val.items))
+            .then(() => setLoading(false))
+        document.title = "Webly"
     }
 
     useEffect(() => {
@@ -25,18 +28,19 @@ const Home = () => {
     return (
         <>
             <main className='mt-[50px] flex flex-col justify-center items-center space-y-10'>
-                <BannerHome />
+                {!loading ? <BannerHome /> : <BannerHomeSkeleton />}
 
-                <CarouselHome blogs={blogs?.slice(0, 3)} />
+                {!loading ? <CarouselHome blogs={blogs?.slice(0, 3)} /> : <CarouselHomeSkeleton />}
 
                 {/* Blog cards */}
                 <section className='w-11/12 md:w-4/5 flex flex-col justify-center items-center space-y-4'>
                     <h1 className='uppercase text-3xl font-bold tracking-widest border-b border-orange-500'>Latest Blogs</h1>
-                    <div className='grid md:grid-cols-3 gap-6'>
-                        {blogs?.slice(3).map(val =>
-                            <BlogCard key={val.sys.id} blog={val} />
-                        )}
+                    <div className='w-full grid md:grid-cols-3 gap-6'>
+                        {!loading ?
+                            blogs?.slice(3).map(val => <BlogCard key={val.sys.id} blog={val} />)
+                            : Array.from({ length: 6 }).map((_, ind) => <BlogCardSkeleton key={ind} />)}
                     </div>
+
                     <Link to="/blogs" className='text-xl hover:text-orange-500 flex items-center'>Explore more on blogs <ArrowUpRightIcon /> </Link>
                 </section>
 

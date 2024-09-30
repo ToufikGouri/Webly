@@ -51,3 +51,38 @@ const CarouselHome = ({ blogs }) => {
 }
 
 export default CarouselHome
+
+// Skeleton loading
+export const CarouselHomeSkeleton = () => {
+    return (
+        <>
+            <section className='w-full md:w-4/5 flex flex-col justify-center items-center space-y-4'>
+
+                <h1 className='uppercase text-3xl font-bold tracking-widest border-b border-orange-500'>Hot Topics</h1>
+
+                <Carousel opts={{ align: "start" }} className="w-11/12 md:w-full">
+                    <CarouselContent>
+                        {[1, 2, 3]?.map(val =>
+                            <CarouselItem key={val} className="basis-4/5 md:basis-1/2">
+
+                                <div
+                                    className='relative flex max-md:flex-col bg-cardBg rounded-xl overflow-hidden hover:bg-white/10'
+                                >
+                                    <div className='bg-white/10 animate-pulse h-64 md:h-80 w-full md:w-2/4 object-cover object-center' />
+                                    <div className='md:w-2/4 flex flex-col justify-center md:items-center md:text-center space-y-4 px-2 min-h-32 max-md:p-4'>
+                                        <h1 className='bg-white/10 animate-pulse rounded-xl h-5 md:h-6 w-3/4'></h1>
+                                        <p className='bg-white/10 animate-pulse rounded-xl flex items-center h-2 max-md:h-3 w-2/4'></p>
+                                    </div>
+                                </div>
+
+                            </CarouselItem>
+                        )}
+                    </CarouselContent>
+                    
+                    <CarouselPrevious className="text-black max-md:hidden" />
+                    <CarouselNext className="text-black max-md:hidden" />
+                </Carousel>
+            </section>
+        </>
+    )
+}

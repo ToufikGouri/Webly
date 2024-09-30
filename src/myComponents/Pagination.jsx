@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 // pass dataLength safely using data?.length
-const Pagination = ({ dataLength, limit, page, setPage, searchParams, setSearchParams }) => {
+const Pagination = ({ dataLength, limit, page, setPage, searchParams, setSearchParams, divId, extraScrollTop }) => {
 
     const [paginationArray, setPaginationArray] = useState([])
     const maxVisiblePages = 4; // number of pages to show
@@ -26,7 +26,16 @@ const Pagination = ({ dataLength, limit, page, setPage, searchParams, setSearchP
         if (val > page && dataLength < limit) return;    // for last page
         setPage(val)
         setSearchParams({ page: val })
-        window.scrollTo({ top: "0", behavior: "smooth" })   // scroll on top
+        // scroll logic
+        if (divId) {
+            const elementPosition = document.getElementById(divId).offsetTop   // get the position of the element relative to the top of the document
+            window.scrollTo({       
+                top: elementPosition - extraScrollTop,  // scroll to the calculated position minus the offset
+                behavior: 'smooth'
+            });
+        } else {
+            window.scrollTo({ top: 0, behavior: "smooth" })
+        }
     }
 
     useEffect(() => {

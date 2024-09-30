@@ -1,10 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Footer from '../myComponents/Footer'
 import NewsLetter from '../myComponents/NewsLetter'
 import HeroImage1 from "../assets/HeroAbout1.png"
 import HeroImage2 from "../assets/HeroAbout2.png"
 
 const About = () => {
+
+    useEffect(() => {
+        document.title = "About | Webly"
+    }, [])
+
     return (
         <>
             <section className='mt-[50px] flex flex-col justify-center items-center space-y-10'>

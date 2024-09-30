@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { client, formatDate } from '../myTools'
 import { CalendarFoldIcon, SquarePenIcon, TimerIcon } from 'lucide-react'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
@@ -12,6 +12,8 @@ const BlogSingle = () => {
 
     const { slug } = useParams()
     const id = slug.split("-").at(-1)
+    const [loading, setLoading] = useState(true)
+    const navigate = useNavigate()
     const [blog, setBlog] = useState(null)
     const [recommendedBlogs, setRecommendedBlogs] = useState(null)
     const [createdAt, setCreatedAt] = useState("")
@@ -24,6 +26,8 @@ const BlogSingle = () => {
                 setCreatedAt(val.sys.createdAt)
                 setUpdatedAt(val.sys.updatedAt)
             })
+            .then(() => setLoading(false))
+            .catch((err) => navigate("/404"))
     }
 
     const getRecommendedBlogs = async () => {
@@ -84,30 +88,31 @@ const BlogSingle = () => {
         getBlog()
         getRecommendedBlogs()
         window.scrollTo({ top: 0, behavior: "smooth" })
+        document.title = `${slug.split("-").slice(0, -1).join(" ")} | Webly`
     }, [slug])
 
     return (
         <>
-            {blog ?
+            {!loading ?
                 <section className='mt-[50px] flex flex-col justify-center items-center space-y-10'>
                     <article className='w-11/12 md:w-3/5 flex flex-col justify-center items-center mt-4 space-y-4'>
                         {/* title */}
-                        <h1 className='text-4xl font-bold capitalize'>{blog.title}</h1>
+                        <h1 className='text-4xl font-bold text-center capitalize'>{blog?.title}</h1>
                         {/*  details */}
                         <div className='max-md:w-full flex max-md:justify-between md:space-x-10 text-xs md:text-sm text-white/50'>
-                            <p className='flex items-center'><TimerIcon height={16} />&nbsp;{blog.minRead} min read</p>
+                            <p className='flex items-center'><TimerIcon height={16} />&nbsp;{blog?.minRead} min read</p>
                             <p className='flex items-center'><CalendarFoldIcon height={16} className='max-md:h-4' />&nbsp;{formatDate(createdAt)}</p>
                             {createdAt !== updatedAt &&
                                 <p className='flex items-center'><SquarePenIcon height={16} />&nbsp;Updated {formatDate(updatedAt)}</p>
                             }
                         </div>
                         {/* image */}
-                        {blog.image.fields.file.url &&
-                            <img src={blog.image.fields.file.url} alt={blog.title} className='min-h-60 max-h-96' />
+                        {blog?.image.fields.file.url &&
+                            <img src={blog?.image.fields.file.url} alt={blog?.title} className='min-h-60 max-h-96' />
                         }
                         {/* body */}
-                        <div className='p-4 rounded-xl bg-cardBg/50'>
-                            {documentToReactComponents(blog.body, bodyOptions)}
+                        <div className='p-4 w-full break-words rounded-xl bg-cardBg/50'>
+                            {documentToReactComponents(blog?.body, bodyOptions)}
                         </div>
                     </article>
 
@@ -126,10 +131,26 @@ const BlogSingle = () => {
                     <Footer />
 
                 </section >
-                :
-                <div className='w-full h-screen grid place-items-center'>
-                    <h1>No Blog found</h1>
-                </div>
+                :   // Skeleton loading 
+                <section className='mt-[50px] flex flex-col justify-center items-center space-y-10'>
+                    <article className='w-11/12 md:w-3/5 flex flex-col justify-center items-center mt-4 space-y-4'>
+                        {/* title */}
+                        <h1 className='bg-white/10 animate-pulse rounded-xl h-9 w-full md:w-3/4 font-bold capitalize'></h1>
+                        {/*  details */}
+                        <div className='max-md:w-full flex max-md:justify-between md:space-x-10 text-xs md:text-sm text-white/50'>
+                            <p className='bg-white/10 animate-pulse rounded-xl h-5 w-24 flex items-center'></p>
+                            <p className='bg-white/10 animate-pulse rounded-xl h-5 w-24 flex items-center'></p>
+                            <p className='bg-white/10 animate-pulse rounded-xl h-5 w-24 flex items-center'></p>
+                        </div>
+                        {/* image */}
+                        <div className='bg-white/10 animate-pulse rounded-xl w-full h-60 md:h-96' />
+
+                        {/* body */}
+                        <div className='bg-cardBg/50 animate-pulse rounded-xl w-full h-screen p-4'></div>
+                    </article>
+                    <NewsLetter />
+                    <Footer />
+                </section>
             }
         </>
     )

@@ -30,3 +30,26 @@ const BlogCardFullSize = ({ blog }) => {
 }
 
 export default BlogCardFullSize
+
+// Skeleton loading 
+export const BlogCardFullSizeSkeleton = () => {
+    return (
+        <>
+            <div className='relative min-h-32 max-md:mx-2 flex bg-cardBg rounded-xl overflow-hidden duration-200 hover:translate-x-2'>
+                <div className='bg-white/10 animate-pulse h-32 md:h-48 w-2/5 object-cover object-center' />
+
+                <div className='w-3/5 flex flex-col justify-between p-2'>
+                    <div>
+                        <div className='bg-white/10 animate-pulse h-6 w-24 md:w-28 flex items-center p-1 px-2 mb-1 uppercase max-md:text-xs text-red-500 border border-red-500'></div>
+                        <h1 className='bg-white/10 animate-pulse rounded-xl h-4 w-3/4 md:text-2xl font-semibold capitalize'></h1>
+                        <h1 className='bg-white/10 animate-pulse rounded-xl h-4 w-3/4 md:text-2xl font-semibold capitalize mt-2'></h1>
+                    </div>
+                    <div className='flex justify-between text-white/50 max-md:text-xs'>
+                        <p className='bg-white/10 animate-pulse rounded-xl h-3 w-20 flex items-center'></p>
+                        <p className='bg-white/10 animate-pulse rounded-xl h-3 w-20 flex items-center'></p>
+                    </div>
+                </div>
+            </div>
+        </>
+    )
+}

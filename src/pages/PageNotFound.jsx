@@ -1,7 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 const PageNotFound = () => {
+
+    useEffect(() => {
+        document.title = "404 | Webly"
+    }, [])
+
     return (
         <>
             <section className='h-screen w-full flex flex-col justify-center items-center'>
