@@ -11,7 +11,7 @@
 
 🌐 **Dynamic Blog Content**: Webly pulls fresh, real-time content from Contentful a headless CMS to keep the blog constantly updated with the latest posts.
 
-✅ **Easy Data Updation**: The Author can create, update or delete the content very easily directly from contentful dashboard and after publish same will be reflected on website on real time.
+✅ **Easy Data Updation**: The Author can create, update or delete the content very easily directly from contentful dashboard and after publish same will be reflected on website in real time.
 
 🎨 **Modern UI**: A clean, mobile-friendly interface designed using **TailwindCSS** and  a little bit of **ShadCN** components for a sleek, responsive user experience.
 
